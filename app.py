@@ -37,9 +37,6 @@ st.title("教えて！ニャンコ先生")
 st.image("nyanko.jpg")
 st.write("ニャンコ先生が美容業界に関するお題について、プレゼン資料を自動生成してくれるWebサービスです。")
 
-# ユーザー入力を初期化
-user_input = ""
-
 # ユーザー入力欄を作成
 user_input_title = st.text_input("スライドの題名を入力してください。", key="user_input_title", placeholder="例：東京と大阪の違いから見るネイルサロンのトレンドと今後の展望")
 user_input_content = st.text_area("どのようなスライドを作成したいか入力してください。", key="user_input_content", placeholder="例：東京と大阪のそれぞれの地域でのネイルサロンのトレンドについて説明する。また、その差異から、今後の大阪でのネイルサロン運営におけるトレンド分析を行なってください。")
@@ -48,7 +45,7 @@ user_input_content = st.text_area("どのようなスライドを作成したい
 if st.button("プレゼン資料の作成開始"):
     st.write("礼は七辻屋の饅頭でいいぞ")
     # ユーザー入力を結合
-    user_input = "#スライドの題名:" + user_input_title + "¥r¥n" + "#スライドの内容:" + user_input_content + "¥r¥n"
+    st.session_state["user_input"] = "#スライドの題名:" + user_input_title + "¥r¥n" + "#スライドの内容:" + user_input_content + "¥r¥n"
     communicate()
 
 if st.session_state["messages"]:
