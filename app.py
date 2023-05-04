@@ -31,6 +31,21 @@ def communicate():
     st.session_state["user_input"] = ""
 
 
+# チャットボットの出力結果をmarp形式のマークダウンファイルに変換する関数
+def convert(slides):
+    output_str = """---
+    marp: true
+    _theme: gaia
+    paginate: true
+    backgroundColor: #f5f5f5
+
+    """
+    for i in slides:
+        print(i)
+        output_str += i + "\n"
+
+    return output_str
+
 # ユーザーインターフェイスの構築
 # タイトル＆サイト説明を記載
 st.title("教えて！ニャンコ先生")
@@ -40,10 +55,11 @@ st.write("ニャンコ先生が美容業界に関するお題について、プ�
 # ユーザー入力欄を作成
 user_input_title = st.text_input("スライドの題名を入力してください。", key="user_input_title", placeholder="例：東京と大阪の違いから見るネイルサロンのトレンドと今後の展望")
 user_input_content = st.text_area("どのようなスライドを作成したいか入力してください。", key="user_input_content", placeholder="例：東京と大阪のそれぞれの地域でのネイルサロンのトレンドについて説明する。また、その差異から、今後の大阪でのネイルサロン運営におけるトレンド分析を行なってください。")
+text_contents=""
 
 # ユーザー入力の確定ボタン
 if st.button("プレゼン資料の作成開始"):
-    st.write("礼は七辻屋の饅頭でいいぞ")
+    st.write("🐈：礼は七辻屋の饅頭でいいぞ！少々待つのじゃ(右上のRunningが消えるまで)")
     # ユーザー入力を結合
     st.session_state["user_input"] = "#スライドの題名:" + user_input_title + "¥r¥n" + "#スライドの内容:" + user_input_content + "¥r¥n"
     communicate()
@@ -52,12 +68,10 @@ if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
-        speaker = "🙂"
         if message["role"]=="assistant":
-            speaker="🐈"
-
-        st.write(speaker + ": ¥r¥n" + message["content"])
-        text_contents=message["content"]
+            st.write(message["content"])
+            text_contents=convert(message["content"])
 
 # 出力結果のダウンロードボタン
 # st.download_button('Download Result', text_contents)
+st.download_button(label="Download", data=text_contents, file_name=".md")
