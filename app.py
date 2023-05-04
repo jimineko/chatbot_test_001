@@ -74,4 +74,4 @@ if st.session_state["messages"]:
 
 # 出力結果のダウンロードボタン
 # st.download_button('Download Result', text_contents)
-st.download_button(label="Download", data=text_contents, file_name=".md")
+st.download_button(label="Download", data=text_contents, file_name="slide.md")
