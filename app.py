@@ -33,17 +33,15 @@ def communicate():
 
 # チャットボットの出力結果をmarp形式のマークダウンファイルに変換する関数
 def convert(slides):
-    output_str = """---
+    header_str = """---
     marp: true
     _theme: gaia
     paginate: true
     backgroundColor: #f5f5f5
 
     """
-    for i in slides:
-        print(i)
-        output_str += i + "\n"
 
+    output_str = header_str + slides
     return output_str
 
 # ユーザーインターフェイスの構築
