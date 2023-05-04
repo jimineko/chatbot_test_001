@@ -28,7 +28,7 @@ def communicate():
     messages.append(bot_message)
 
     # 入力欄を消去
-    # st.session_state["user_input"] = ""
+    st.session_state["user_input"] = ""
 
 
 # ユーザーインターフェイスの構築
