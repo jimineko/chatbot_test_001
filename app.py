@@ -61,4 +61,4 @@ if st.session_state["messages"]:
         text_contents=message["content"]
 
 # 出力結果のダウンロードボタン
-st.download_button('Download Result', text_contents)
+# st.download_button('Download Result', text_contents)
