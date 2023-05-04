@@ -38,8 +38,8 @@ st.image("nyanko.jpg")
 st.write("ニャンコ先生が美容業界に関するお題について、プレゼン資料を自動生成してくれるWebサービスです。")
 
 # ユーザー入力欄を作成
-user_input_title = st.text_input("スライドの題名を入力してください。", key="user_input_title", placeholder="東京と大阪の違いから見るネイルサロンのトレンドと今後の展望")
-user_input_content = st.text_area("どのようなスライドを作成したいか入力してください。", key="user_input_content", placeholder="東京と大阪のそれぞれの地域でのネイルサロンのトレンドについて説明する。また、その差異から、今後の大阪でのネイルサロン運営におけるトレンド分析を行なってください。")
+user_input_title = st.text_input("スライドの題名を入力してください。", key="user_input_title", placeholder="例：東京と大阪の違いから見るネイルサロンのトレンドと今後の展望")
+user_input_content = st.text_area("どのようなスライドを作成したいか入力してください。", key="user_input_content", placeholder="例：東京と大阪のそれぞれの地域でのネイルサロンのトレンドについて説明する。また、その差異から、今後の大阪でのネイルサロン運営におけるトレンド分析を行なってください。")
 
 # ユーザー入力を結合
 user_input = "#スライドの題名:" + user_input_title + "¥r¥n" + "#スライドの内容:" + user_input_content + "¥r¥n"
@@ -47,7 +47,7 @@ user_input = "#スライドの題名:" + user_input_title + "¥r¥n" + "#スラ�
 # ユーザー入力の確定ボタン
 if st.button("プレゼン資料の作成開始"):
     st.write("礼は七辻屋の饅頭でいいぞ")
-    communicate
+    communicate()
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
